@@ -1,4 +1,3 @@
-#coding=GBK
 import cv2
 import numpy as np
 
@@ -57,51 +56,51 @@ def detect_color(image_path):
     #生成相应颜色的掩膜
     def RGB_cover(color):
         ranges = color_set[color]['rgb']
-        mask_r = cv2.inRange(r, ranges[0][0], ranges[0][1])
-        mask_g = cv2.inRange(g, ranges[1][0], ranges[1][1])
-        mask_b = cv2.inRange(b, ranges[2][0], ranges[2][1])
-        mask = cv2.bitwise_and(mask_r, cv2.bitwise_and(mask_g, mask_b))
+        cover_r = cv2.inRange(r, ranges[0][0], ranges[0][1])
+        cover_g = cv2.inRange(g, ranges[1][0], ranges[1][1])
+        cover_b = cv2.inRange(b, ranges[2][0], ranges[2][1])
+        cover = cv2.bitwise_and(cover_r, cv2.bitwise_and(cover_g, cover_b))
         #生成掩膜后进行去噪处理
-        k1 = np.ones((5,5),np.unit8)
-        mask = cv2.morphologyEx(mask,cv2.MORPH_CLOSE,k1)
-        return mask
+        k1 = np.ones((5,5),np.uint8)
+        cover = cv2.morphologyEx(cover,cv2.MORPH_CLOSE,k1)
+        return cover
     
     #生成相应颜色的掩膜
     def HSV_cover(color):
-        mask = np.zeros((height, width), dtype=np.uint8)
+        cover = np.zeros((height, width), dtype=np.uint8)
         for range in color_set[color]['hsv']:
             lower = np.array([range[0], range[1], range[2]])
             upper = np.array([range[3], range[4], range[5]])
-            mask = cv2.bitwise_or(mask, cv2.inRange(hsv_img, lower, upper))
-            k1 = np.ones((5,5),np.unit8)
-            mask = cv2.morphologyEx(mask,cv2.MORPH_CLOSE,k1)
-        return mask
+            cover = cv2.bitwise_or(cover, cv2.inRange(hsv_img, lower, upper))
+            k1 = np.ones((5,5),np.uint8)
+            cover = cv2.morphologyEx(cover,cv2.MORPH_CLOSE,k1)
+        return cover
 
     # RGB检测
     max_rgb = {'count': 0, 'color': 'unknown'}
     for color in color_set:
-        mask = RGB_cover(color)
-        count = cv2.countNonZero(mask)
+        cover = RGB_cover(color)
+        count = cv2.countNonZero(cover)
         if count > max_rgb['count']:
             max_rgb = {'count': count, 'color': color}
 
     # HSV检测
     max_hsv = {'count': 0, 'color': 'unknown'}
     for color in color_set:
-        mask = HSV_cover(color)
-        count = cv2.countNonZero(mask)
+        cover = HSV_cover(color)
+        count = cv2.countNonZero(cover)
         if count > max_hsv['count']:
             max_hsv = {'count': count, 'color': color}
 
     # 阈值判断（至少5%像素）
     min = total_pixels * 0.05
-    rgb_result = max_rgb['color'] if max_rgb['count'] > min else 'unknown'
-    hsv_result = max_hsv['color'] if max_hsv['count'] > min else 'unknown'
+    RGB = max_rgb['color'] if max_rgb['count'] > min else 'unknown'
+    HSV = max_hsv['color'] if max_hsv['count'] > min else 'unknown'
 
-    return rgb_result, hsv_result
+    return RGB, HSV
 
-# 使用示例
+
 image_path = './gragh/normal_images/1_cropped.jpg'
-rgb_color, hsv_color = detect_color(image_path)
-print(f"RGB检测结果: {rgb_color}")
-print(f"HSV检测结果: {hsv_color}")
+RGB_RESULT, HSV_RESULT = detect_color(image_path)
+print(f"RGB检测结果: {RGB_RESULT}")
+print(f"HSV检测结果: {HSV_RESULT}")
