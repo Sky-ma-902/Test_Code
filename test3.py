@@ -21,18 +21,14 @@ def dynamicrange(img):
         imgv_adjust = -30
         imgs_adjust = -20
     elif avgv > 180: # 强光环境
-        imgv_adjust = +40
-        imgs_adjust = -30
+        imgv_adjust = +50
+        imgs_adjust = +20
     else:            # 正常光照
         imgv_adjust = 0
         imgs_adjust = 0
     
     color_range = {
-        'white': 
-        {
-            'rgb': ([(200, 255), (200, 255), (200, 255)]),
-            'hsv': [(0, 0, max(200+imgv_adjust,0), 180, 50, 255)]
-        },
+        
         'red': 
         {
             'rgb': ([(150, 255), (0, 120), (0, 120)]),
@@ -58,6 +54,11 @@ def dynamicrange(img):
         {
             'rgb': ([(0, 50+imgv_adjust), (0, 50+imgv_adjust), (0, 50+imgv_adjust)]),
             'hsv': [(0, 0, 0, 180, 255, 30+imgv_adjust)]
+        },
+        'white': 
+        {
+            'rgb': ([(200, 255), (200, 255), (200, 255)]),
+            'hsv': [(0, 0, max(200+imgv_adjust,0), 180, 30-imgs_adjust, 255)]
         }        
     }
     return color_range
@@ -124,7 +125,7 @@ def detect_color(image_path):
     HSV = max_hsv['color'] if max_hsv['count'] > min else 'unknown'
     return RGB, HSV
 
-image_path = './gragh/stronglight_images/2_cropped.jpg'
+image_path = './gragh/stronglight_images/4_cropped.jpg'
 RGB_RESULT, HSV_RESULT = detect_color(image_path)
 print(f"RGB检测结果: {RGB_RESULT}")
 print(f"HSV检测结果: {HSV_RESULT}")
