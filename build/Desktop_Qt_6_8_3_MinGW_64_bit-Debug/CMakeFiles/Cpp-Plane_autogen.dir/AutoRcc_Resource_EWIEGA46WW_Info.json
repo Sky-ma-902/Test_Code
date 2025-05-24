@@ -1,0 +1,33 @@
+{
+	"BUILD_DIR" : "D:/Cpp-Plane/Cpp-Plane/build/Desktop_Qt_6_8_3_MinGW_64_bit-Debug/Cpp-Plane_autogen",
+	"CMAKE_BINARY_DIR" : "D:/Cpp-Plane/Cpp-Plane/build/Desktop_Qt_6_8_3_MinGW_64_bit-Debug",
+	"CMAKE_CURRENT_BINARY_DIR" : "D:/Cpp-Plane/Cpp-Plane/build/Desktop_Qt_6_8_3_MinGW_64_bit-Debug",
+	"CMAKE_CURRENT_SOURCE_DIR" : "D:/Cpp-Plane/Cpp-Plane",
+	"CMAKE_SOURCE_DIR" : "D:/Cpp-Plane/Cpp-Plane",
+	"CROSS_CONFIG" : false,
+	"GENERATOR" : "Ninja",
+	"INCLUDE_DIR" : "D:/Cpp-Plane/Cpp-Plane/build/Desktop_Qt_6_8_3_MinGW_64_bit-Debug/Cpp-Plane_autogen/include",
+	"INPUTS" : 
+	[
+		"D:/Cpp-Plane/Cpp-Plane/score.h.png",
+		"D:/Cpp-Plane/Cpp-Plane/enemyB.png",
+		"D:/Cpp-Plane/Cpp-Plane/fire.png",
+		"D:/Cpp-Plane/Cpp-Plane/player.png",
+		"D:/Cpp-Plane/Cpp-Plane/bullet_plus.png",
+		"D:/Cpp-Plane/Cpp-Plane/bullet.png",
+		"D:/Cpp-Plane/Cpp-Plane/background.jpg",
+		"D:/Cpp-Plane/Cpp-Plane/backgroud.wav",
+		"D:/Cpp-Plane/Cpp-Plane/bullet.wav"
+	],
+	"LOCK_FILE" : "D:/Cpp-Plane/Cpp-Plane/build/Desktop_Qt_6_8_3_MinGW_64_bit-Debug/CMakeFiles/Cpp-Plane_autogen.dir/AutoRcc_Resource_EWIEGA46WW_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "--no-zstd", "-name", "Resource" ],
+	"OUTPUT_CHECKSUM" : "EWIEGA46WW",
+	"OUTPUT_NAME" : "qrc_Resource.cpp",
+	"RCC_EXECUTABLE" : "D:/QT/6.8.3/mingw_64/bin/rcc.exe",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "D:/Cpp-Plane/Cpp-Plane/build/Desktop_Qt_6_8_3_MinGW_64_bit-Debug/CMakeFiles/Cpp-Plane_autogen.dir/AutoRcc_Resource_EWIEGA46WW_Used.txt",
+	"SOURCE" : "D:/Cpp-Plane/Cpp-Plane/Resource.qrc",
+	"USE_BETTER_GRAPH" : true,
+	"VERBOSITY" : 0
+}
